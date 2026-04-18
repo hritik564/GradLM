@@ -1,10 +1,24 @@
 import { useState } from "react";
-import { CheckCircle, Check } from "lucide-react";
+import { Check } from "lucide-react";
 
 const countries = ["USA", "UK", "Canada", "Australia", "Germany", "Ireland", "Others"];
 const degrees = ["Bachelor's", "Master's", "PhD"];
 const intakes = ["Fall 2025", "Spring 2026", "Fall 2026", "Spring 2027"];
-const helpOptions = ["University Selection", "Education Loan", "Visa Assistance", "SOP Writing", "Scholarships"];
+const goalOptions = [
+  "Land a job in the country I study in",
+  "Return to India with a foreign degree",
+  "Start my own business",
+  "Pursue further research / PhD",
+  "Not sure yet",
+];
+const helpOptions = [
+  "University Selection",
+  "Education Loan",
+  "Visa Assistance",
+  "SOP Writing",
+  "Career & Job Placement",
+  "Scholarships",
+];
 
 interface FormData {
   name: string;
@@ -13,6 +27,7 @@ interface FormData {
   country: string;
   degree: string;
   intake: string;
+  goal: string;
   helpWith: string[];
   gre: string;
   gpa: string;
@@ -20,13 +35,13 @@ interface FormData {
 
 const initialData: FormData = {
   name: "", phone: "", email: "", country: "", degree: "", intake: "",
-  helpWith: [], gre: "", gpa: "",
+  goal: "", helpWith: [], gre: "", gpa: "",
 };
 
 export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
   const [step, setStep] = useState(1);
   const [data, setData] = useState<FormData>(initialData);
-  const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitted, setSubmitted] = useState(false);
 
   const validate = () => {
@@ -40,9 +55,10 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
       if (!data.country) e.country = "Required";
       if (!data.degree) e.degree = "Required";
       if (!data.intake) e.intake = "Required";
+      if (!data.goal) e.goal = "Required";
     }
     if (step === 3) {
-      if (data.helpWith.length === 0) (e as { helpWith?: string }).helpWith = "Select at least one";
+      if (data.helpWith.length === 0) e.helpWith = "Select at least one" as unknown as undefined;
       if (!data.gpa.trim()) e.gpa = "Required";
     }
     setErrors(e);
@@ -92,15 +108,15 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
 
   return (
     <form onSubmit={submit} noValidate data-testid="lead-form">
-      {/* Progress bar */}
+      {/* Progress steps */}
       <div className="mb-8">
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center mb-2">
           {[1, 2, 3].map((s) => (
-            <div key={s} className="flex items-center gap-2">
+            <div key={s} className="flex items-center">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${step >= s ? "gradient-bg" : "bg-muted text-muted-foreground"}`}>
                 {step > s ? <Check size={14} /> : s}
               </div>
-              {s < 3 && <div className={`flex-1 h-0.5 mx-2 transition-all ${step > s ? "bg-primary" : "bg-muted"}`} style={{ width: "60px" }} />}
+              {s < 3 && <div className={`h-0.5 w-12 mx-1 transition-all ${step > s ? "bg-primary" : "bg-muted"}`} />}
             </div>
           ))}
         </div>
@@ -191,6 +207,19 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
               {intakes.map((i) => <option key={i} value={i}>{i}</option>)}
             </select>
             {errors.intake && <p className="text-destructive text-xs mt-1">{errors.intake}</p>}
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-foreground mb-1">What's your goal after graduation? *</label>
+            <select
+              value={data.goal}
+              onChange={(e) => setData({ ...data, goal: e.target.value })}
+              className={`w-full px-4 py-3 rounded-xl border ${errors.goal ? "border-destructive" : "border-input"} focus:outline-none focus:ring-2 focus:ring-primary text-sm bg-background`}
+              data-testid="select-goal"
+            >
+              <option value="">Select your goal...</option>
+              {goalOptions.map((g) => <option key={g} value={g}>{g}</option>)}
+            </select>
+            {errors.goal && <p className="text-destructive text-xs mt-1">{errors.goal}</p>}
           </div>
         </div>
       )}

@@ -13,14 +13,14 @@ const steps = [
     number: "02",
     icon: ListChecks,
     title: "Get Your Shortlist",
-    description: "Same day. AI-powered admit probability matched to your profile.",
+    description: "Same day. Expert-matched universities based on your profile and career goals.",
     delay: "150ms",
   },
   {
     number: "03",
     icon: Sparkles,
-    title: "We Handle the Rest",
-    description: "Loans, SOPs, visa — our experts take it from here.",
+    title: "We Handle Everything — Including Your Career",
+    description: "Loans, SOPs, visa, and after you land — job search support, resume reviews, and referral introductions.",
     delay: "300ms",
   },
 ];
@@ -44,7 +44,7 @@ export default function HowItWorks() {
   }, []);
 
   return (
-    <section id="how-it-works" ref={ref} className="py-20 md:py-28 bg-white" data-testid="how-it-works-section">
+    <section id="how-it-works" ref={ref} className="py-20 bg-white" data-testid="how-it-works-section">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-14 scroll-observe">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-primary/10 text-primary mb-4">The Process</span>

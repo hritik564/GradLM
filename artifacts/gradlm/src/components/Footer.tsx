@@ -2,7 +2,7 @@ import { Linkedin, Instagram, Youtube, MessageCircle } from "lucide-react";
 
 const footerLinks = {
   Company: ["About Us", "Careers", "Blog", "Press"],
-  Services: ["University Selection", "Education Loans", "Visa Assistance", "SOP Writing"],
+  Services: ["University Selection", "Education Loans", "Visa Assistance", "SOP Writing", "Career & Job Placement"],
   Countries: ["USA", "UK", "Canada", "Australia", "Germany", "Singapore"],
   Resources: ["GRE Guide", "Loan Calculator", "Visa Checklist", "Scholarship Finder"],
 };
@@ -48,7 +48,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/40">© 2025 GradLM. All rights reserved.</p>
+          <p className="text-sm text-white/40">© 2026 GradLM. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="text-sm text-white/40 hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="text-sm text-white/40 hover:text-white transition-colors">Terms of Service</a>

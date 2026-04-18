@@ -21,7 +21,7 @@ export default function Home() {
       <Stats />
       <Services />
       <HowItWorks />
-      <Testimonials />
+      <Testimonials onOpenModal={() => setModalOpen(true)} />
       <UniversityMarquee />
       <LeadFormSection />
       <FAQ />

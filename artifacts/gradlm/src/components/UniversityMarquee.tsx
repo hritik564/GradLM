@@ -16,9 +16,9 @@ export default function UniversityMarquee() {
   return (
     <section id="universities" className="py-20 md:py-24 bg-white overflow-hidden" data-testid="university-marquee-section">
       <div className="container mx-auto px-4 md:px-6 mb-10 text-center">
-        <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-primary/10 text-primary mb-4">Our Alumni Network</span>
+        <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-primary/10 text-primary mb-4">Target Universities</span>
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
-          Our Students Study <span className="gradient-text">At</span>
+          We Help You Get <span className="gradient-text">Into</span>
         </h2>
       </div>
 

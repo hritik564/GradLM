@@ -1,0 +1,247 @@
+You are updating an existing React study abroad website called GradLM. 
+Do NOT rebuild from scratch. Make precise, targeted changes to the 
+existing code. Here is the complete list of fixes required:
+
+---
+
+## FIX 1 — HERO SECTION
+
+Replace the current subheading with:
+"From university shortlisting to landing your first job abroad — 
+expert guidance, zero fees, zero confusion."
+
+Remove the floating badge that says "500+ Students Placed This Year"
+Replace it with: "🎓 Counsellors with 10+ Years of Experience"
+
+Remove "4.8/5 from 2,400+ students" and the avatar circles entirely.
+Replace with: "✅ Free. Expert-led. Career-focused." as a simple 
+inline trust line in gray-500, no stars, no fake numbers.
+
+Add a 4th bullet point to the hero value list (if one exists) or add 
+beneath the two CTA buttons a row of 3 pill badges:
+- "🎓 University Shortlisting"
+- "💼 Career & Job Placement" ← NEW, styled in gradient to stand out
+- "💰 Education Loans"
+
+---
+
+## FIX 2 — STATS BAR
+
+Replace ALL four stats with the following. Remove animated counters 
+for stats that aren't real yet. Use static display instead:
+
+Stat 1: "10+" | "Years of Combined Expertise"
+Stat 2: "50+" | "Partner Universities"
+Stat 3: "8" | "Countries We Place Students In"
+Stat 4: "₹0" | "Fee For You" ← Fix the double rupee symbol bug (was showing ₹₹0)
+
+Remove "12K+ Students Counselled" and "95% Visa Success Rate" entirely.
+These are unverifiable claims for a new business.
+
+---
+
+## FIX 3 — SERVICES SECTION
+
+Keep the existing 3 cards (University Selection, Education Loans, 
+Visa Assistance) but update their copy as follows:
+
+Card 1 — University Selection:
+Title: "University Selection"
+Description: "Expert-matched shortlist based on your GRE, GPA, budget, 
+and career goals. Our counsellors have placed students in 50+ universities 
+across 8 countries."
+CTA: "Find Your University →"
+
+Card 2 — Education Loans:
+Title: "Education Loans"
+Description: "We help you compare lenders and find the best rate. No 
+confusing paperwork, no hidden charges — just clarity."
+CTA: "Explore Loan Options →"
+Remove the claim "We negotiate for you" if there is no actual 
+negotiation service set up.
+
+Card 3 — Visa Assistance:
+Title: "Visa & SOP Guidance"
+Description: "End-to-end support for your Statement of Purpose, 
+documentation, and visa application. Guided by counsellors who've 
+done this hundreds of times."
+CTA: "Start Your Application →"
+Remove the "95% success rate" claim.
+
+ADD A 4TH CARD — this is mandatory:
+Title: "Career & Job Placement"
+Icon: briefcase icon (use lucide-react Briefcase icon, same gradient 
+circle style as other cards)
+Description: "We don't stop at admission. Resume building, LinkedIn 
+optimization, interview prep, and referral networks — we help you 
+land your first job after graduation."
+CTA: "Explore Career Support →"
+Badge on this card: small pill tag in gradient that says "Our Edge ✦" 
+positioned top-right of the card to draw the eye.
+
+The 4 cards should display as a 2x2 grid on desktop, single column 
+on mobile.
+
+---
+
+## FIX 4 — HOW IT WORKS SECTION
+
+Fix the large dead whitespace gap above this section — reduce the 
+padding-top to match the section above it.
+
+Update Step 3 copy:
+Old: "We Handle the Rest"
+New: "We Handle Everything — Including Your Career"
+Description: "Loans, SOPs, visa, and after you land — job search 
+support, resume reviews, and referral introductions."
+
+---
+
+## FIX 5 — TESTIMONIALS SECTION
+
+Remove ALL fake testimonials (Priya S., Rahul M., Sneha K., Arjun T., 
+and any others). Do not display fabricated reviews.
+
+Replace the entire testimonials section with the following 
+"Early Access" social proof block:
+
+Section label: "JOIN OUR COMMUNITY"
+Heading: "Be Among Our First Success Stories"
+Subheading: "We're onboarding our founding batch of students. 
+Get priority access, personal attention, and our lowest counsellor 
+ratios — ever."
+
+Display 3 cards side by side (stack on mobile), each styled like 
+the testimonial cards but containing:
+
+Card 1:
+Icon: 🎓
+Title: "Priority Counselling"
+Body: "Founding batch students get 1-on-1 sessions directly with 
+senior counsellors — not junior associates."
+
+Card 2:
+Icon: 💼
+Title: "Career Head Start"
+Body: "Get early access to our career placement program before we 
+open it to the general public."
+
+Card 3:
+Icon: 🔒
+Title: "Locked-In Zero Fees"
+Body: "Early users will never be charged — even if we introduce 
+premium tiers later."
+
+Below the 3 cards, add a single CTA button centered:
+"Claim Your Founding Spot →" (gradient button, same style as hero CTA)
+
+---
+
+## FIX 6 — UNIVERSITY MARQUEE SECTION
+
+Change heading from:
+"Our Students Study At"
+To:
+"We Help You Get Into"
+
+This is an honest framing — it's aspirational, not a false claim.
+
+---
+
+## FIX 7 — LEAD CAPTURE FORM SECTION
+
+Left panel — update copy:
+Heading: "Talk to an Expert. It's Free."
+Remove: "Join 12,000+ students who've already started"
+Replace with: "🔒 Your details are never shared or sold."
+
+Update the 3 bullet points to:
+✅ Personalized university shortlist — same day
+✅ Career & job placement roadmap — NEW
+✅ Loan & visa guidance — end to end
+
+Right panel — Step 1 (Basic Info): No changes needed, form is clean.
+
+Step 2 — Your Profile: Add one new field:
+Label: "What's your goal after graduation?"
+Type: dropdown
+Options: 
+- Land a job in the country I study in
+- Return to India with a foreign degree
+- Start my own business
+- Pursue further research / PhD
+- Not sure yet
+
+This field feeds directly into your career counselling differentiation 
+and helps counsellors personalize their first call.
+
+Step 3 — Your Needs: Update the multi-select pills to include:
+University Selection | Education Loan | Visa Assistance | 
+SOP Writing | Career & Job Placement ← ADD THIS | Scholarships
+
+---
+
+## FIX 8 — FAQ SECTION
+
+Fix the heading line break — "All The Time" should not wrap with 
+"Time" dangling alone in gradient. Change heading to:
+"Frequently Asked Questions"
+(clean, no gradient styling needed here — let the content do the work)
+
+Add one new FAQ item at the top:
+
+Q: "Do you help with jobs after graduation?"
+A: "Yes — and this is what makes GradLM different. Most consultants 
+stop at the admit letter. We stay with you through your job search, 
+helping with resume building, LinkedIn optimization, and connecting 
+you with our alumni and recruiter network in your target country."
+
+Update Q: "How is GradLM different from other consultants?"
+A: "Three things. First, we cover the full journey — from picking a 
+university to landing your first job abroad. Second, our counsellors 
+have real placement experience, not just admissions knowledge. Third, 
+it's completely free for students."
+
+---
+
+## FIX 9 — FOOTER
+
+Change copyright year from 2025 to 2026.
+
+Under SERVICES column, add:
+"Career & Job Placement" as a new link item (can be # for now)
+
+---
+
+## FIX 10 — GLOBAL AUDIT
+
+Search the entire codebase for these strings and remove or replace them:
+
+- "12,000+" or "12K+" → replace with "50+" (partner universities) 
+  or remove entirely
+- "2,400+ students" → remove
+- "95% Visa Success Rate" → remove
+- "500+ Students Placed" → remove  
+- "AI-powered" or "AI-matched" → replace with "Expert-matched"
+- "© 2025" → replace with "© 2026"
+- Any instance of "Trusted by X students" → remove
+
+---
+
+## DESIGN RULES — Do Not Break These
+
+- Keep the existing blue-violet gradient system (#2D31FA → #7B2FBE)
+- Keep all existing section spacing except the How It Works whitespace bug
+- Keep the navbar, footer structure, and form layout exactly as-is
+- The 4th service card must match the visual style of the existing 3 cards exactly
+- Mobile responsiveness must be preserved on all modified sections
+- No new external libraries or dependencies
+
+---
+
+After making all changes, do a full visual review and confirm:
+1. No section has fake student numbers
+2. The 4th "Career & Job Placement" card is visible and styled correctly
+3. The stats bar shows ₹0 with a single rupee symbol (not ₹₹0)
+4. The testimonials section has been fully replaced
+5. Copyright shows 2026

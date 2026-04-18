@@ -3,12 +3,16 @@ import { ChevronDown } from "lucide-react";
 
 const faqs = [
   {
+    q: "Do you help with jobs after graduation?",
+    a: "Yes — and this is what makes GradLM different. Most consultants stop at the admit letter. We stay with you through your job search, helping with resume building, LinkedIn optimization, and connecting you with our alumni and recruiter network in your target country.",
+  },
+  {
     q: "Is your service really free?",
     a: "Yes, completely free. GradLM is compensated by our partner universities and lenders — never by students. You get expert guidance at zero cost.",
   },
   {
     q: "How is GradLM different from other consultants?",
-    a: "We use data, not intuition. Your shortlist is based on real admit probability, ROI, and your profile — not which universities pay us the most commission. We believe in radical transparency.",
+    a: "Three things. First, we cover the full journey — from picking a university to landing your first job abroad. Second, our counsellors have real placement experience, not just admissions knowledge. Third, it's completely free for students.",
   },
   {
     q: "How quickly can I get a university shortlist?",
@@ -20,7 +24,7 @@ const faqs = [
   },
   {
     q: "Can you help with education loans?",
-    a: "Absolutely. We compare rates across 10+ lenders including public banks, private NBFCs, and international lenders. Our team negotiates on your behalf to get you the best possible deal.",
+    a: "Absolutely. We compare rates across multiple lenders including public banks, private NBFCs, and international lenders to help you find the best fit for your situation.",
   },
 ];
 
@@ -45,7 +49,7 @@ function FAQItem({ q, a, idx }: { q: string; a: string; idx: number }) {
       </button>
       <div
         className="overflow-hidden transition-all duration-300"
-        style={{ maxHeight: open ? "200px" : "0px" }}
+        style={{ maxHeight: open ? "300px" : "0px" }}
       >
         <p className="px-6 pb-6 text-muted-foreground leading-relaxed">{a}</p>
       </div>
@@ -77,7 +81,7 @@ export default function FAQ() {
         <div className="text-center mb-12 scroll-observe">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-primary/10 text-primary mb-4">FAQ</span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-foreground">
-            Questions We Get <span className="gradient-text">All The Time</span>
+            Frequently Asked Questions
           </h2>
         </div>
         <div className="space-y-4">

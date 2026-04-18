@@ -3,9 +3,9 @@ import { CheckCircle } from "lucide-react";
 import LeadForm from "./LeadForm";
 
 const bullets = [
-  "Personalized university shortlist",
-  "Loan eligibility check",
-  "Visa & SOP guidance",
+  "Personalized university shortlist — same day",
+  "Career & job placement roadmap",
+  "Loan & visa guidance — end to end",
 ];
 
 export default function LeadFormSection() {
@@ -41,15 +41,15 @@ export default function LeadFormSection() {
             </p>
             <ul className="space-y-4 mb-10">
               {bullets.map((b) => (
-                <li key={b} className="flex items-center gap-3 text-white">
-                  <CheckCircle size={20} className="flex-shrink-0 text-white/80" />
+                <li key={b} className="flex items-start gap-3 text-white">
+                  <CheckCircle size={20} className="flex-shrink-0 text-white/80 mt-0.5" />
                   <span className="font-medium">{b}</span>
                 </li>
               ))}
             </ul>
             <div className="flex items-center gap-2 text-white/70 text-sm">
-              <span className="text-xl">👥</span>
-              <span>Join <strong className="text-white">12,000+</strong> students who've already started</span>
+              <span>🔒</span>
+              <span>Your details are never shared or sold.</span>
             </div>
           </div>
 
