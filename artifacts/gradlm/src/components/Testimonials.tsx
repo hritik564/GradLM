@@ -1,20 +1,21 @@
 import { useEffect, useRef } from "react";
+import { Users, Briefcase, Shield } from "lucide-react";
 
 const earlyAccessCards = [
   {
-    icon: "🎓",
+    Icon: Users,
     title: "Priority Counselling",
     body: "Founding batch students get 1-on-1 sessions directly with senior counsellors — not junior associates.",
     delay: "0ms",
   },
   {
-    icon: "💼",
+    Icon: Briefcase,
     title: "Career Head Start",
     body: "Get early access to our career placement program before we open it to the general public.",
     delay: "100ms",
   },
   {
-    icon: "🔒",
+    Icon: Shield,
     title: "Locked-In Zero Fees",
     body: "Early users will never be charged — even if we introduce premium tiers later.",
     delay: "200ms",
@@ -53,18 +54,23 @@ export default function Testimonials({ onOpenModal }: { onOpenModal?: () => void
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
-          {earlyAccessCards.map((card) => (
-            <div
-              key={card.title}
-              className="scroll-observe bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-border text-center"
-              style={{ transitionDelay: card.delay }}
-              data-testid={`early-access-card-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
-            >
-              <div className="text-4xl mb-5">{card.icon}</div>
-              <h3 className="text-lg font-bold text-foreground mb-3">{card.title}</h3>
-              <p className="text-muted-foreground leading-relaxed text-sm">{card.body}</p>
-            </div>
-          ))}
+          {earlyAccessCards.map((card) => {
+            const Icon = card.Icon;
+            return (
+              <div
+                key={card.title}
+                className="scroll-observe bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-border text-center"
+                style={{ transitionDelay: card.delay }}
+                data-testid={`early-access-card-${card.title.toLowerCase().replace(/\s+/g, "-")}`}
+              >
+                <div className="w-16 h-16 rounded-full gradient-bg flex items-center justify-center mb-6 mx-auto">
+                  <Icon size={28} className="text-white" />
+                </div>
+                <h3 className="text-lg font-bold text-foreground mb-3">{card.title}</h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">{card.body}</p>
+              </div>
+            );
+          })}
         </div>
 
         <div className="text-center scroll-observe" style={{ transitionDelay: "300ms" }}>

@@ -16,7 +16,7 @@ export default function Footer() {
             <div className="text-2xl font-bold mb-3">
               Grad<span className="gradient-text">LM</span>
             </div>
-            <p className="text-sm text-white/60 leading-relaxed">The smarter way to study abroad. Zero fees. Zero confusion.</p>
+            <p className="text-sm text-white/60 leading-relaxed">From university shortlisting to your first job abroad — expert guidance, zero fees.</p>
             <div className="flex gap-4 mt-6">
               <a href="#" aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" data-testid="social-linkedin">
                 <Linkedin size={16} />
