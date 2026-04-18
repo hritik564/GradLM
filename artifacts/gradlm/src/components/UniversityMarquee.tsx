@@ -28,20 +28,23 @@ const row2 = [
 
 function LogoCard({ name, domain }: { name: string; domain: string }) {
   const [imgFailed, setImgFailed] = useState(false);
+  const logoUrl = `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
 
   return (
     <div className="flex-shrink-0 mx-3 w-36 h-24 bg-white rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 border border-border flex flex-col items-center justify-center gap-2 px-3">
       {!imgFailed ? (
         <img
-          src={`https://logo.clearbit.com/${domain}`}
+          src={logoUrl}
           alt={name}
-          className="h-12 w-auto object-contain"
+          className="w-12 h-12 object-contain rounded-lg"
           onError={() => setImgFailed(true)}
         />
       ) : (
-        <span className="text-sm font-semibold gradient-text text-center leading-tight">{name}</span>
+        <div className="w-12 h-12 rounded-xl gradient-bg flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+          {name.charAt(0)}
+        </div>
       )}
-      <span className="text-xs font-medium text-gray-600 text-center leading-tight">{name}</span>
+      <span className="text-xs font-semibold text-gray-600 text-center leading-tight">{name}</span>
     </div>
   );
 }
