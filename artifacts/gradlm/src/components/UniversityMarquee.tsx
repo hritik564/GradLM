@@ -63,7 +63,7 @@ export default function UniversityMarquee() {
       </div>
 
       <div className="space-y-4">
-        <div className="flex overflow-hidden">
+        <div className="marquee-track flex overflow-hidden">
           <div className="flex animate-marquee">
             {doubledRow1.map((u, i) => <LogoCard key={i} name={u.name} domain={u.domain} />)}
           </div>
@@ -71,7 +71,7 @@ export default function UniversityMarquee() {
             {doubledRow1.map((u, i) => <LogoCard key={i + 100} name={u.name} domain={u.domain} />)}
           </div>
         </div>
-        <div className="flex overflow-hidden">
+        <div className="marquee-track flex overflow-hidden">
           <div className="flex animate-marquee-reverse">
             {doubledRow2.map((u, i) => <LogoCard key={i} name={u.name} domain={u.domain} />)}
           </div>

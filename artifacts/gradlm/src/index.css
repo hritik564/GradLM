@@ -208,7 +208,11 @@
 
 .animate-marquee {
   display: inline-flex;
-  animation: marquee 60s linear infinite;
+  animation: marquee 90s linear infinite;
+}
+
+.marquee-track:hover .animate-marquee {
+  animation-play-state: paused;
 }
 
 @keyframes marquee-reverse {
@@ -222,7 +226,11 @@
 
 .animate-marquee-reverse {
   display: inline-flex;
-  animation: marquee-reverse 60s linear infinite;
+  animation: marquee-reverse 90s linear infinite;
+}
+
+.marquee-track:hover .animate-marquee-reverse {
+  animation-play-state: paused;
 }
 
 @keyframes float {
