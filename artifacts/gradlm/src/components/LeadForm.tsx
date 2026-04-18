@@ -142,7 +142,7 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
         <h3 className="text-2xl font-extrabold text-foreground mb-2">You're in! 🎉</h3>
         <p className="text-muted-foreground mb-6">Our counsellor will call you within 2 hours.</p>
         <a
-          href="https://wa.me/919876543210"
+          href="https://wa.me/919266599208"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 text-white px-7 py-3.5 font-semibold hover:opacity-90 transition-opacity"
@@ -375,7 +375,7 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
               Something went wrong. Please WhatsApp us directly.
             </p>
             <a
-              href="https://wa.me/919876543210"
+              href="https://wa.me/919266599208"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-white text-sm px-5 py-2.5 font-semibold hover:opacity-90 transition-opacity"

@@ -27,7 +27,7 @@ export default function Footer() {
               <a href="#" aria-label="YouTube" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" data-testid="social-youtube">
                 <Youtube size={16} />
               </a>
-              <a href="https://wa.me/919999999999" aria-label="WhatsApp" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" data-testid="social-whatsapp">
+              <a href="https://wa.me/919266599208" aria-label="WhatsApp" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors" data-testid="social-whatsapp">
                 <MessageCircle size={16} />
               </a>
             </div>
