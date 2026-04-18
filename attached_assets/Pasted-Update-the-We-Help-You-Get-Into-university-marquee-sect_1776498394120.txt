@@ -1,0 +1,63 @@
+Update the "We Help You Get Into" university marquee section.
+
+Replace the current text pill design with logo-based cards using 
+the Clearbit Logo API: https://logo.clearbit.com/{domain}
+
+Display format for each university:
+- White rounded card (rounded-2xl)
+- Subtle box shadow (shadow-sm, hover:shadow-md transition)
+- University logo image (48px height, object-contain) centered
+- University short name below in gray-600, text-xs, font-medium
+- Card size: ~140px wide, ~90px tall
+- On hover: slight lift (translateY -2px, transition-all duration-200)
+
+Keep the two-row infinite marquee animation but apply it to these 
+logo cards instead of text pills.
+
+Row 1 scrolls left. Row 2 scrolls right. Same as before.
+
+Use these universities and their Clearbit logo URLs:
+
+ROW 1:
+{ name: "MIT", domain: "mit.edu" }
+{ name: "Stanford", domain: "stanford.edu" }
+{ name: "Harvard", domain: "harvard.edu" }
+{ name: "Cornell", domain: "cornell.edu" }
+{ name: "Columbia", domain: "columbia.edu" }
+{ name: "UCLA", domain: "ucla.edu" }
+{ name: "Georgia Tech", domain: "gatech.edu" }
+{ name: "Purdue", domain: "purdue.edu" }
+{ name: "UT Austin", domain: "utexas.edu" }
+{ name: "UMich", domain: "umich.edu" }
+
+ROW 2:
+{ name: "Oxford", domain: "ox.ac.uk" }
+{ name: "Cambridge", domain: "cam.ac.uk" }
+{ name: "UCL", domain: "ucl.ac.uk" }
+{ name: "Edinburgh", domain: "ed.ac.uk" }
+{ name: "TU Munich", domain: "tum.de" }
+{ name: "NUS", domain: "nus.edu.sg" }
+{ name: "Melbourne", domain: "unimelb.edu.au" }
+{ name: "UBC", domain: "ubc.ca" }
+{ name: "Toronto", domain: "utoronto.ca" }
+{ name: "McGill", domain: "mcgill.ca" }
+
+Logo URL pattern for each:
+https://logo.clearbit.com/{domain}
+
+Add error handling: if a logo fails to load, fall back to showing 
+the university short name in a styled text badge instead. Use 
+onError on the img tag for this.
+
+Example img tag:
+<img 
+  src="https://logo.clearbit.com/mit.edu"
+  alt="MIT"
+  className="h-12 w-auto object-contain"
+  onError={(e) => { e.target.style.display='none'; }}
+/>
+
+The section background should be white (#FFFFFF) so logos 
+(which are mostly dark on transparent) render cleanly.
+
+Do not change anything else on the page.
