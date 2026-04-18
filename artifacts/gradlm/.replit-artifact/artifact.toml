@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "GradLM"
+version = "1.0.0"
+id = "artifacts/gradlm"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24201
+
+[services.development]
+run = "pnpm --filter @workspace/gradlm run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/gradlm", "run", "build" ]
+publicDir = "artifacts/gradlm/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24201"
+BASE_PATH = "/"

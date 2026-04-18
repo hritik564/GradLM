@@ -1,0 +1,220 @@
+Build a high-converting, single-page study abroad consultancy website using React + Tailwind CSS. The design should be premium, modern, and inspired by GradRight.com — clean whitespace, bold typography, vibrant gradient accents (deep blue to violet), subtle animations, and strong trust signals. The site must be fully mobile-responsive.
+
+---
+
+## BRAND & DESIGN SYSTEM
+
+- Primary color: #2D31FA (electric blue)
+- Accent gradient: linear-gradient(135deg, #2D31FA, #7B2FBE)
+- Background: #FFFFFF with soft #F4F6FF section breaks
+- Font: Inter (Google Fonts) — bold headings, regular body
+- Rounded corners: 16px cards, 999px buttons
+- Micro-animations: fade-in-up on scroll (use Intersection Observer), counter animation on stats, hover lift on cards (translateY -4px, box-shadow)
+- NO stock photo placeholders — use abstract SVG illustrations or gradient blobs
+
+---
+
+## PAGE STRUCTURE
+
+### 1. STICKY NAVBAR
+- Logo left (text: "EduPath" or placeholder)
+- Nav links: Services | Universities | Loans | About | Blog
+- Right CTA button: "Get Free Counselling" (gradient pill button, opens lead form modal)
+- On mobile: hamburger menu with slide-down drawer
+
+---
+
+### 2. HERO SECTION
+- Headline (60px bold): "The Smarter Way to Study Abroad"
+- Subheading (20px, gray-600): "Expert guidance on universities, loans, and visas — all in one place. Zero fees, zero confusion."
+- Two CTAs side by side:
+  - Primary: "Get Free Counselling" (gradient button)
+  - Secondary: "Explore Universities →" (ghost button)
+- Below CTAs: small trust line — "⭐ 4.8/5 from 2,400+ students" with 5 small avatar circles
+- Right side: a vibrant abstract SVG illustration of a student with globe/graduation cap (create with pure SVG, no images)
+- Animated floating badge: "🎓 500+ Students Placed This Year"
+
+---
+
+### 3. STATS BAR (full-width, gradient background)
+Four animated counters that count up on scroll:
+- "12,000+" → Students Counselled
+- "95%" → Visa Success Rate
+- "50+" → Partner Universities
+- "₹0" → Fee For You
+
+Use countUp animation: start at 0, reach target in 2 seconds when section enters viewport.
+
+---
+
+### 4. SERVICES SECTION
+Heading: "Everything You Need. One Roof."
+Three cards in a row (stack on mobile):
+
+Card 1 — 🎓 University Selection
+"AI-matched shortlist in minutes based on your GRE, GPA, and budget. No guesswork."
+CTA: "Find Your University →"
+
+Card 2 — 💰 Education Loans
+"Compare 10+ lenders. Lowest interest rates. We negotiate for you."
+CTA: "Check Loan Options →"
+
+Card 3 — 🌍 Visa Assistance
+"End-to-end SOP, documentation, and interview prep. 95% success rate."
+CTA: "Start Visa Process →"
+
+Each card: white background, subtle drop shadow, icon in gradient circle, hover lift animation.
+
+---
+
+### 5. HOW IT WORKS
+Heading: "Your Journey in 3 Simple Steps"
+Horizontal step flow (vertical on mobile) with connecting dotted line:
+
+Step 1 → Fill Your Profile (2 mins)
+Step 2 → Get Your Shortlist (Same Day)
+Step 3 → We Handle the Rest
+
+Each step: number in gradient circle, title bold, description below.
+
+---
+
+### 6. SOCIAL PROOF — TESTIMONIALS
+Heading: "Loved by students across India"
+Auto-scrolling horizontal carousel (no pause on hover, loops infinitely):
+8 testimonial cards, each containing:
+- Student avatar (colored initials circle: first letter of name)
+- Name, university admitted to, country flag emoji
+- Star rating (⭐⭐⭐⭐⭐)
+- Quote (2 lines max)
+
+Sample data to pre-fill:
+1. Priya S. → Cornell University 🇺🇸 — "Got my admit in 6 weeks. The team knew exactly which universities to apply to."
+2. Rahul M. → University of Melbourne 🇦🇺 — "Loan was approved in 3 days. Saved ₹2 lakhs on interest."
+3. Sneha K. → TU Munich 🇩🇪 — "Free of charge and better than any paid consultant I tried."
+4. Arjun T. → UBC Canada 🇨🇦 — "Visa approved first attempt. The SOP they helped me write was flawless."
+5. Divya R. → University of Edinburgh 🏴󠁧󠁢󠁳󠁣󠁴󠁿 — "From shortlist to offer letter in 8 weeks. Unbelievable."
+6. Karan B. → ASU 🇺🇸 — "Used 3 consultants before. EduPath was the only one that was honest."
+7. Meera J. → Monash University 🇦🇺 — "The loan comparison alone saved me ₹1.5L over the loan tenure."
+8. Nikhil P. → NUS Singapore 🇸🇬 — "Zero fee platform that outperforms every paid consultancy."
+
+Infinite marquee CSS animation, no library needed.
+
+---
+
+### 7. LEAD CAPTURE FORM (inline section, not just modal)
+Full-width section with gradient left panel and white form panel on right.
+
+Left panel (gradient blue-violet):
+- Heading: "Talk to an Expert. It's Free."
+- 3 bullet checkmarks:
+  ✅ Personalized university shortlist
+  ✅ Loan eligibility check
+  ✅ Visa & SOP guidance
+- Student count: "Join 12,000+ students who've already started"
+
+Right panel (white, rounded card):
+Multi-step form (3 steps, progress bar at top):
+
+Step 1 — Basic Info
+- Full Name (text input)
+- Phone Number (with +91 prefix selector)
+- Email Address
+
+Step 2 — Your Profile
+- Target Country (dropdown: USA, UK, Canada, Australia, Germany, Ireland, Others)
+- Degree Level (dropdown: Bachelor's, Master's, PhD)
+- Target Intake (dropdown: Fall 2025, Spring 2026, Fall 2026, Spring 2027)
+
+Step 3 — Your Needs
+- What do you need help with? (multi-select pills):
+  University Selection | Education Loan | Visa Assistance | SOP Writing | Scholarships
+- GRE/GMAT Score (optional, text)
+- GPA / Percentage (text)
+
+Final CTA button: "Get My Free Counselling →" (gradient, full-width)
+
+After submit: replace form with success state:
+- Large checkmark animation (CSS keyframe, green circle drawing itself)
+- "You're in! 🎉"
+- "Our counsellor will call you within 2 hours."
+- "WhatsApp us now →" button (green, opens wa.me link)
+
+Form validation: required fields highlighted red on empty submit. No page reload.
+
+---
+
+### 8. UNIVERSITIES MARQUEE STRIP
+Heading: "Our Students Study At"
+Two rows of university name pills (text-only, gradient border) scrolling in opposite directions:
+Row 1 (left): MIT | Stanford | Harvard | Cornell | Columbia | UCLA | ASU | Purdue | UMich | Georgia Tech
+Row 2 (right): Oxford | Cambridge | UCL | Edinburgh | TU Munich | NUS | Melbourne | UBC | Toronto | McGill
+
+CSS-only animation, no JS.
+
+---
+
+### 9. FAQ SECTION
+Heading: "Questions We Get All The Time"
+Accordion (click to expand, smooth height animation):
+
+Q1: Is your service really free?
+A: Yes. We are compensated by partner universities and lenders, never by students.
+
+Q2: How is EduPath different from other consultants?
+A: We use data, not intuition. Your shortlist is based on admit probability, ROI, and your profile — not which universities pay us the most commission.
+
+Q3: How quickly can I get a university shortlist?
+A: Within 24 hours of your first call.
+
+Q4: Which countries do you help with?
+A: USA, UK, Canada, Australia, Germany, Ireland, Singapore, and more.
+
+Q5: Can you help with education loans?
+A: Yes. We compare rates across 10+ lenders and help you get the best deal.
+
+---
+
+### 10. FOOTER
+- Logo + 1-line tagline
+- 4 columns: Company | Services | Countries | Resources
+- Social icons: LinkedIn, Instagram, YouTube, WhatsApp
+- Bottom bar: "© 2025 EduPath. All rights reserved." | Privacy Policy | Terms
+
+---
+
+## TECHNICAL REQUIREMENTS
+
+- React functional components only
+- Tailwind CSS for all styling (CDN via script tag in index.html or via Vite config)
+- Intersection Observer API for scroll animations (no GSAP, no AOS library)
+- All animations in pure CSS keyframes or Tailwind transition classes
+- Form state managed with useState (multi-step)
+- Modal (lead form) triggered by nav CTA button — built with React portal or conditional render + backdrop
+- No external UI library (no shadcn, no MUI, no Chakra)
+- No image imports — all visuals are SVG or CSS gradient shapes
+- Mobile-first responsive: 1-column on mobile, 2-3 columns on tablet/desktop
+- Smooth scroll on nav link clicks
+- Page load: all above-fold content renders in <1s (no heavy imports)
+
+---
+
+## FILE STRUCTURE
+/src
+  /components
+    Navbar.jsx
+    Hero.jsx
+    Stats.jsx
+    Services.jsx
+    HowItWorks.jsx
+    Testimonials.jsx
+    LeadForm.jsx
+    UniversityMarquee.jsx
+    FAQ.jsx
+    Footer.jsx
+    LeadFormModal.jsx
+  App.jsx
+  index.css (custom keyframe animations)
+index.html
+
+Build this as a complete, working, production-ready React app. Every section must be fully implemented with real content — no placeholder "lorem ipsum", no "TODO" comments.
