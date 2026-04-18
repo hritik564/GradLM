@@ -261,6 +261,15 @@
   animation: slideDown 0.3s ease-out forwards;
 }
 
+@keyframes spinCircle {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-circle {
+  animation: spinCircle 0.8s linear infinite;
+  display: inline-block;
+}
+
 /* Intersection Observer utility class */
 .scroll-observe {
   opacity: 0;

@@ -1,0 +1,72 @@
+Update the lead capture form to submit data to a Google Apps Script 
+webhook when the user completes all 3 steps and clicks the final 
+submit button.
+
+WEBHOOK URL: https://script.google.com/macros/s/AKfycbwSX5_S0IF1uRkLEXyLWbac9vAGX_K5TnTauAG-8kFcVAiyzY_J1_dGEg8MMmh_f7Ug1Q/exec
+
+On final form submission (Step 3, last button click):
+
+1. Collect ALL form data from all 3 steps into one object:
+   - fullName (string)
+   - phone (string, without +91 prefix)
+   - email (string)
+   - country (string, from Step 2 dropdown)
+   - degree (string, from Step 2 dropdown)
+   - intake (string, from Step 2 dropdown)
+   - postGradGoal (string, from Step 2 dropdown)
+   - helpNeeded (array of strings, from Step 3 multi-select pills)
+   - greScore (string, optional)
+   - gpa (string, optional)
+
+2. Show a loading state on the submit button while the request 
+   is in flight:
+   - Disable the button
+   - Change button text to "Submitting..." with a spinning circle 
+     animation (CSS keyframe, no library)
+
+3. Send the POST request exactly like this:
+
+fetch('https://script.google.com/macros/s/AKfycbwSX5_S0IF1uRkLEXyLWbac9vAGX_K5TnTauAG-8kFcVAiyzY_J1_dGEg8MMmh_f7Ug1Q/exec', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(formData),
+  mode: 'no-cors'
+})
+
+IMPORTANT: Use mode: 'no-cors' — this is required for Google Apps 
+Script. Because of no-cors, you cannot read the response body. 
+That is expected and correct. Any fetch that completes without 
+throwing a network error should be treated as a success.
+
+4. On success (fetch completes without throwing an error):
+   - Replace the form with this success screen:
+   
+   Large animated green checkmark (CSS circle that draws itself 
+   using stroke-dashoffset animation, no library)
+   
+   Heading: "You're in! 🎉"
+   Subtext: "Our counsellor will call you within 2 hours."
+   
+   WhatsApp button below:
+   - Text: "WhatsApp Us Now →"
+   - Background: #25D366
+   - Text color: white
+   - Shape: pill (border-radius 999px)
+   - Padding: 14px 28px
+   - Link: https://wa.me/919876543210
+   - Opens in new tab
+
+5. On error (fetch throws — network failure):
+   - Keep the form visible
+   - Show this message in red below the submit button:
+     "Something went wrong. Please WhatsApp us directly."
+   - Show a smaller WhatsApp button below the error message
+   - Re-enable the submit button so they can try again
+
+6. Make sure ALL form state from Steps 1, 2, and 3 is stored in 
+   a single shared state object at the top level of the form 
+   component so every field is available at submission time. 
+   If state is currently split across steps or local to each 
+   step component, consolidate it now.
+
+Do not change anything else on the page.

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Check } from "lucide-react";
 
+const WEBHOOK_URL =
+  "https://script.google.com/macros/s/AKfycbwSX5_S0IF1uRkLEXyLWbac9vAGX_K5TnTauAG-8kFcVAiyzY_J1_dGEg8MMmh_f7Ug1Q/exec";
+
 const countries = ["USA", "UK", "Canada", "Australia", "Germany", "Ireland", "Others"];
 const degrees = ["Bachelor's", "Master's", "PhD"];
 const intakes = ["Fall 2025", "Spring 2026", "Fall 2026", "Spring 2027"];
@@ -34,8 +37,9 @@ interface FormData {
 }
 
 const initialData: FormData = {
-  name: "", phone: "", email: "", country: "", degree: "", intake: "",
-  goal: "", helpWith: [], gre: "", gpa: "",
+  name: "", phone: "", email: "",
+  country: "", degree: "", intake: "", goal: "",
+  helpWith: [], gre: "", gpa: "",
 };
 
 export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
@@ -43,6 +47,8 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
   const [data, setData] = useState<FormData>(initialData);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const validate = () => {
     const e: Partial<Record<keyof FormData, string>> = {};
@@ -69,18 +75,48 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
     if (validate()) setStep((s) => Math.min(s + 1, 3));
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validate()) {
+    if (!validate()) return;
+
+    setLoading(true);
+    setSubmitError(false);
+
+    const payload = {
+      fullName: data.name,
+      phone: data.phone,
+      email: data.email,
+      country: data.country,
+      degree: data.degree,
+      intake: data.intake,
+      postGradGoal: data.goal,
+      helpNeeded: data.helpWith,
+      greScore: data.gre,
+      gpa: data.gpa,
+    };
+
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+        mode: "no-cors",
+      });
       setSubmitted(true);
       onSuccess?.();
+    } catch {
+      setSubmitError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
   const toggleHelp = (opt: string) => {
     setData((d) => ({
       ...d,
-      helpWith: d.helpWith.includes(opt) ? d.helpWith.filter((h) => h !== opt) : [...d.helpWith, opt],
+      helpWith: d.helpWith.includes(opt)
+        ? d.helpWith.filter((h) => h !== opt)
+        : [...d.helpWith, opt],
     }));
   };
 
@@ -89,18 +125,31 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
       <div className="flex flex-col items-center justify-center py-12 text-center" data-testid="form-success">
         <div className="relative w-20 h-20 mb-6">
           <svg viewBox="0 0 80 80" className="w-20 h-20">
-            <circle cx="40" cy="40" r="36" fill="none" stroke="#10B981" strokeWidth="4" strokeDasharray="226" strokeDashoffset="226" className="animate-draw-circle" style={{ animationFillMode: "forwards" }} />
-            <path d="M24 40l12 12 20-22" fill="none" stroke="#10B981" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+            <circle
+              cx="40" cy="40" r="36"
+              fill="none" stroke="#10B981" strokeWidth="4"
+              strokeDasharray="226" strokeDashoffset="226"
+              className="animate-draw-circle"
+              style={{ animationFillMode: "forwards" }}
+            />
+            <path
+              d="M24 40l12 12 20-22"
+              fill="none" stroke="#10B981" strokeWidth="4"
+              strokeLinecap="round" strokeLinejoin="round"
+            />
           </svg>
         </div>
         <h3 className="text-2xl font-extrabold text-foreground mb-2">You're in! 🎉</h3>
         <p className="text-muted-foreground mb-6">Our counsellor will call you within 2 hours.</p>
         <a
-          href="https://wa.me/919999999999"
-          className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#20bb5a] transition-colors"
+          href="https://wa.me/919876543210"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 text-white px-7 py-3.5 font-semibold hover:opacity-90 transition-opacity"
+          style={{ backgroundColor: "#25D366", borderRadius: "999px" }}
           data-testid="whatsapp-button"
         >
-          WhatsApp us now →
+          WhatsApp Us Now →
         </a>
       </div>
     );
@@ -120,7 +169,9 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
             </div>
           ))}
         </div>
-        <p className="text-xs text-muted-foreground">{step === 1 ? "Basic Info" : step === 2 ? "Your Profile" : "Your Needs"}</p>
+        <p className="text-xs text-muted-foreground">
+          {step === 1 ? "Basic Info" : step === 2 ? "Your Profile" : "Your Needs"}
+        </p>
       </div>
 
       {step === 1 && (
@@ -245,10 +296,14 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
                 </button>
               ))}
             </div>
-            {(errors as Record<string, string>).helpWith && <p className="text-destructive text-xs mt-1">{(errors as Record<string, string>).helpWith}</p>}
+            {(errors as Record<string, string>).helpWith && (
+              <p className="text-destructive text-xs mt-1">{(errors as Record<string, string>).helpWith}</p>
+            )}
           </div>
           <div>
-            <label className="block text-sm font-medium text-foreground mb-1">GRE/GMAT Score <span className="text-muted-foreground font-normal">(optional)</span></label>
+            <label className="block text-sm font-medium text-foreground mb-1">
+              GRE/GMAT Score <span className="text-muted-foreground font-normal">(optional)</span>
+            </label>
             <input
               type="text"
               value={data.gre}
@@ -273,34 +328,62 @@ export default function LeadForm({ onSuccess }: { onSuccess?: () => void }) {
         </div>
       )}
 
-      <div className="mt-8 flex gap-3">
-        {step > 1 && (
-          <button
-            type="button"
-            onClick={() => setStep((s) => s - 1)}
-            className="px-6 py-3 rounded-full border border-input text-sm font-semibold text-foreground hover:bg-muted transition-colors"
-            data-testid="button-back"
-          >
-            Back
-          </button>
-        )}
-        {step < 3 ? (
-          <button
-            type="button"
-            onClick={next}
-            className="flex-1 gradient-bg py-3 rounded-full text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5 transition-all"
-            data-testid="button-next"
-          >
-            Continue →
-          </button>
-        ) : (
-          <button
-            type="submit"
-            className="flex-1 gradient-bg py-3 rounded-full text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5 transition-all"
-            data-testid="button-submit"
-          >
-            Get My Free Counselling →
-          </button>
+      <div className="mt-8 flex flex-col gap-3">
+        <div className="flex gap-3">
+          {step > 1 && (
+            <button
+              type="button"
+              onClick={() => setStep((s) => s - 1)}
+              disabled={loading}
+              className="px-6 py-3 rounded-full border border-input text-sm font-semibold text-foreground hover:bg-muted transition-colors disabled:opacity-50"
+              data-testid="button-back"
+            >
+              Back
+            </button>
+          )}
+          {step < 3 ? (
+            <button
+              type="button"
+              onClick={next}
+              className="flex-1 gradient-bg py-3 rounded-full text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5 transition-all"
+              data-testid="button-next"
+            >
+              Continue →
+            </button>
+          ) : (
+            <button
+              type="submit"
+              disabled={loading}
+              className="flex-1 gradient-bg py-3 rounded-full text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              data-testid="button-submit"
+            >
+              {loading ? (
+                <>
+                  <span className="animate-spin-circle w-4 h-4 border-2 border-white/40 border-t-white rounded-full" />
+                  Submitting...
+                </>
+              ) : (
+                "Get My Free Counselling →"
+              )}
+            </button>
+          )}
+        </div>
+
+        {submitError && (
+          <div className="text-center space-y-3 pt-1" data-testid="submit-error">
+            <p className="text-destructive text-sm font-medium">
+              Something went wrong. Please WhatsApp us directly.
+            </p>
+            <a
+              href="https://wa.me/919876543210"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-white text-sm px-5 py-2.5 font-semibold hover:opacity-90 transition-opacity"
+              style={{ backgroundColor: "#25D366", borderRadius: "999px" }}
+            >
+              WhatsApp Us →
+            </a>
+          </div>
         )}
       </div>
     </form>
