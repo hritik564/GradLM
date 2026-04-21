@@ -41,7 +41,7 @@ export default function Testimonials({ onOpenModal }: { onOpenModal?: () => void
   }, []);
 
   return (
-    <section ref={ref} className="py-20 md:py-28 bg-[#F4F6FF]" data-testid="early-access-section">
+    <section ref={ref} className="pt-20 md:pt-28 pb-[60px] md:pb-28 bg-[#F4F6FF]" data-testid="early-access-section">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 scroll-observe">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-primary/10 text-primary mb-4">Join Our Community</span>

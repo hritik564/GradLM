@@ -32,7 +32,7 @@ export default function Hero({ onOpenModal }: { onOpenModal: () => void }) {
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               Counsellors with 10+ Years of Experience
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
+            <h1 className="text-[40px] md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1] mb-6">
               The <span className="gradient-text">Smarter Way</span><br />
               To Study Abroad
             </h1>
@@ -76,7 +76,7 @@ export default function Hero({ onOpenModal }: { onOpenModal: () => void }) {
             </p>
           </div>
 
-          <div className="w-full lg:w-1/2 relative scroll-observe" style={{ transitionDelay: "200ms" }} data-testid="hero-illustration">
+          <div className="hidden lg:block lg:w-1/2 relative scroll-observe" style={{ transitionDelay: "200ms" }} data-testid="hero-illustration">
             <div className="relative w-full max-w-lg mx-auto">
               <svg viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto drop-shadow-xl">
                 <ellipse cx="260" cy="240" rx="220" ry="200" fill="url(#bgGrad)" fillOpacity="0.12" />

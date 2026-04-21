@@ -1,0 +1,103 @@
+Fix the following mobile-specific issues on the GradLM website.
+Only touch what is listed. Do not rebuild any section from scratch.
+
+All fixes apply at breakpoint: max-width 768px (mobile only).
+
+---
+
+FIX 1 — HERO: HIDE ILLUSTRATION ON MOBILE
+
+The right-side globe SVG illustration and its floating badge cards 
+("10+ Years of Counsellor Experience" and "Career Support After 
+Graduation") are taking up excessive vertical space on mobile.
+
+On mobile (max-width: 768px):
+- Hide the entire right-side illustration container completely 
+  (display: none)
+- The hero section becomes single column, left-aligned content only
+- Remove any min-height on the hero section that was sized for 
+  the two-column layout
+- The hero content (badge, headline, subheading, CTAs, pills, 
+  trust line) should flow naturally without the illustration
+
+The result: on mobile, the hero should show headline → subheading 
+→ two CTA buttons → three service pills → trust line, all visible 
+without scrolling or with minimal scroll.
+
+---
+
+FIX 2 — HERO: REDUCE HEADLINE FONT SIZE ON MOBILE
+
+The headline "The Smarter Way To Study Abroad" is breaking 
+awkwardly on mobile with "Way" orphaned on its own line.
+
+On mobile, reduce the hero headline font size to 40px (from 
+whatever it currently is on desktop, likely 56-64px).
+
+This should make the headline fit cleanly in 2 lines maximum:
+"The Smarter Way" / "To Study Abroad"
+
+---
+
+FIX 3 — STRIKETHROUGH BUG ON LEAD FORM
+
+In the lead form left panel (gradient purple section), the text:
+"Loan & visa guidance — end to end"
+is rendering with a strikethrough (text-decoration: line-through).
+
+Find this element and remove the strikethrough. The correct style 
+is plain white text, no decoration, same as the other two bullet 
+points above it.
+
+---
+
+FIX 4 — REMOVE DEAD WHITESPACE GAPS ON MOBILE
+
+There are two sections with excessive top padding/margin on mobile:
+
+Gap 1: Between the Services section (4 cards) and the 
+"Your Journey in 3 Simple Steps" section.
+Fix: On mobile, set the top padding of the HowItWorks section 
+to 60px maximum.
+
+Gap 2: Between the "Claim Your Founding Spot" button and the 
+"TARGET UNIVERSITIES" label below it.
+Fix: On mobile, set the bottom padding of the founding batch 
+section to 60px maximum.
+
+---
+
+FIX 5 — LEAD FORM LEFT PANEL: REDUCE HEIGHT ON MOBILE
+
+On mobile, the gradient left panel ("Talk to an Expert. It's Free.") 
+stacks above the form but is too tall, pushing the actual form 
+fields below the fold.
+
+On mobile:
+- Reduce vertical padding of the left panel to 32px top and bottom 
+  (from current value)
+- Hide the subtext "No strings attached. Our counsellors are here 
+  to guide you — not sell you." on mobile only to save space
+- Keep the heading, 3 bullet points, and privacy line visible
+- The form panel below it should be visible without excessive 
+  scrolling
+
+---
+
+DO NOT CHANGE:
+- Any desktop layout or styling
+- The hamburger menu (already works)
+- The university logo marquee (looks fine on mobile)
+- The footer (looks fine on mobile)
+- The FAQ section (looks fine on mobile)
+- The How It Works steps (stacking vertically looks correct)
+- The service cards (single column stacking looks correct)
+- The founding batch cards (single column stacking looks correct)
+
+After making all changes, verify on a 390px wide viewport 
+(iPhone 14 size) that:
+1. Hero content is visible above the fold without scrolling
+2. No strikethrough on the form panel
+3. No excessive whitespace gaps between sections
+4. Form is reachable without excessive scrolling past the 
+   left panel

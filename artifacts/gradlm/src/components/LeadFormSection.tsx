@@ -31,19 +31,19 @@ export default function LeadFormSection() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="rounded-3xl overflow-hidden shadow-2xl flex flex-col lg:flex-row">
           {/* Left gradient panel */}
-          <div className="lg:w-2/5 p-10 md:p-14 gradient-bg flex flex-col justify-center scroll-observe">
+          <div className="lg:w-2/5 py-8 px-8 md:p-14 gradient-bg flex flex-col justify-center scroll-observe">
             <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
               Talk to an Expert.<br />
               <span className="text-white/80">It's Free.</span>
             </h2>
-            <p className="text-white/70 mb-8 leading-relaxed">
+            <p className="hidden md:block text-white/70 mb-8 leading-relaxed">
               No strings attached. Our counsellors are here to guide you — not sell you.
             </p>
-            <ul className="space-y-4 mb-10">
+            <ul className="space-y-4 mb-8 md:mb-10 mt-4 md:mt-0">
               {bullets.map((b) => (
                 <li key={b} className="flex items-start gap-3 text-white">
                   <CheckCircle size={20} className="flex-shrink-0 text-white/80 mt-0.5" />
-                  <span className="font-medium">{b}</span>
+                  <span className="font-medium no-underline" style={{ textDecoration: "none" }}>{b}</span>
                 </li>
               ))}
             </ul>

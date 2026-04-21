@@ -44,7 +44,7 @@ export default function HowItWorks() {
   }, []);
 
   return (
-    <section id="how-it-works" ref={ref} className="pb-20 bg-white" style={{ paddingTop: "80px" }} data-testid="how-it-works-section">
+    <section id="how-it-works" ref={ref} className="pb-20 bg-white pt-[60px] md:pt-[80px]" data-testid="how-it-works-section">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-14 scroll-observe">
           <span className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-primary/10 text-primary mb-4">The Process</span>
