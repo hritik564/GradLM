@@ -1,0 +1,1 @@
+- [Dependency safety alignment](dependency-safety-alignment.md) — align Node engines before replacing a firewall-blocked lockfile package with the newest age-eligible release.
